@@ -1,0 +1,12 @@
+{
+  "name": "edesvino-marketplace",
+  "version": "1.0.0",
+  "description": "Edesvino Marketplace - Buy and sell products online",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
