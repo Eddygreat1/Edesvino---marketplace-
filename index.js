@@ -301,6 +301,103 @@ app.post("/seller/register", (req, res) => {
 });
 
 
+
+
+
+
+/* =========================
+   ORDER PAGE
+========================= */
+
+app.get("/order", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Place Order - Edesvino Marketplace</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+          }
+
+          .order-box {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+          }
+
+          input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+          }
+
+          button {
+            width: 100%;
+            padding: 14px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+          }
+
+          a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div class="order-box">
+
+          <h1>Place Your Order</h1>
+
+          <p>Sample Product</p>
+          <p><strong>Price: ₦0.00</strong></p>
+
+          <form>
+            <label>Full Name</label>
+            <input type="text" required>
+
+            <label>Phone Number</label>
+            <input type="tel" required>
+
+            <label>Delivery Address</label>
+            <input type="text" required>
+
+            <button type="submit">
+              Place Order
+            </button>
+          </form>
+
+          <a href="/products">
+            ← Back to Products
+          </a>
+
+        </div>
+
+      </body>
+    </html>
+  `);
+});
+
+
+
+
+
+
+
 /* =========================
    START SERVER
 ========================= */
