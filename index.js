@@ -11,7 +11,6 @@ app.use(express.json());
    HOMEPAGE
 ========================= */
 
-
 app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -19,6 +18,7 @@ app.get("/", (req, res) => {
     <head>
       <title>Edesvino Marketplace</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <style>
         body {
           font-family: Arial, sans-serif;
@@ -57,7 +57,9 @@ app.get("/", (req, res) => {
     </head>
 
     <body>
+
       <div class="box">
+
         <h1>Edesvino Marketplace</h1>
 
         <p>Buy and sell products online</p>
@@ -82,18 +84,249 @@ app.get("/", (req, res) => {
         </button>
 
         <h3>Products Coming Soon</h3>
+
       </div>
+
     </body>
     </html>
   `);
 });
 
-   
 
-     
-   
+/* =========================
+   PRODUCTS PAGE
+========================= */
 
-   
+app.get("/products", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+      <title>Products - Edesvino Marketplace</title>
+
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
+
+      <style>
+
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background: #f5f5f5;
+        }
+
+        .container {
+          max-width: 700px;
+          margin: auto;
+        }
+
+        .product {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          margin-bottom: 20px;
+        }
+
+        .price {
+          font-size: 20px;
+          font-weight: bold;
+          margin: 15px 0;
+        }
+
+        .buy {
+          padding: 12px 20px;
+          background: green;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        a {
+          display: block;
+          margin-top: 20px;
+          text-align: center;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="container">
+
+        <h1>Edesvino Marketplace</h1>
+
+        <h2>Shop Products</h2>
+
+        <div class="product">
+
+          <h2>Sample Product</h2>
+
+          <p>
+            Products from Edesvino sellers will appear here.
+          </p>
+
+          <div class="price">
+            ₦0.00
+          </div>
+
+          <button
+            class="buy"
+            onclick="window.location.href='/order'"
+          >
+            Buy Now
+          </button>
+
+        </div>
+
+        <a href="/">
+          ← Back to Marketplace
+        </a>
+
+      </div>
+
+    </body>
+
+    </html>
+  `);
+});
+
+
+/* =========================
+   ORDER PAGE
+========================= */
+
+app.get("/order", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+
+      <title>Place Order - Edesvino Marketplace</title>
+
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
+
+      <style>
+
+        body {
+          font-family: Arial, sans-serif;
+          background: #f5f5f5;
+          padding: 20px;
+        }
+
+        .order-box {
+          max-width: 500px;
+          margin: 30px auto;
+          background: white;
+          padding: 25px;
+          border-radius: 12px;
+        }
+
+        input {
+          width: 100%;
+          padding: 12px;
+          margin-top: 6px;
+          margin-bottom: 18px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+        }
+
+        button {
+          width: 100%;
+          padding: 14px;
+          background: green;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        a {
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="order-box">
+
+        <h1>Place Your Order</h1>
+
+        <p>
+          <strong>Sample Product</strong>
+        </p>
+
+        <p>
+          Price: ₦0.00
+        </p>
+
+        <form>
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            name="fullName"
+            required
+          />
+
+          <label>
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            name="phone"
+            required
+          />
+
+          <label>
+            Delivery Address
+          </label>
+
+          <input
+            type="text"
+            name="address"
+            required
+          />
+
+          <button type="submit">
+            Place Order
+          </button>
+
+        </form>
+
+        <a href="/products">
+          ← Back to Products
+        </a>
+
+      </div>
+
+    </body>
+
+    </html>
+  `);
+});
 
 
 /* =========================
@@ -104,122 +337,149 @@ app.get("/seller/register", (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html>
-      <head>
-        <title>Seller Registration - Edesvino Marketplace</title>
 
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        />
+    <head>
 
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-          }
+      <title>
+        Seller Registration - Edesvino Marketplace
+      </title>
 
-          .form-box {
-            max-width: 500px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          }
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
 
-          h1 {
-            text-align: center;
-          }
+      <style>
 
-          label {
-            font-weight: bold;
-          }
+        body {
+          font-family: Arial, sans-serif;
+          background: #f5f5f5;
+          padding: 20px;
+        }
 
-          input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            margin-bottom: 18px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-          }
+        .form-box {
+          max-width: 500px;
+          margin: 30px auto;
+          background: white;
+          padding: 25px;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-          button {
-            width: 100%;
-            padding: 14px;
-            background: #008000;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-          }
+        h1 {
+          text-align: center;
+        }
 
-          a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-          }
-        </style>
-      </head>
+        label {
+          font-weight: bold;
+        }
 
-      <body>
+        input {
+          width: 100%;
+          padding: 12px;
+          margin-top: 6px;
+          margin-bottom: 18px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+        }
 
-        <div class="form-box">
+        button {
+          width: 100%;
+          padding: 14px;
+          background: green;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          font-size: 16px;
+          cursor: pointer;
+        }
 
-          <h1>Become a Seller</h1>
+        a {
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+        }
 
-          <form method="POST" action="/seller/register">
+      </style>
 
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              required
-            />
+    </head>
 
-            <label>Email Address</label>
-            <input
-              type="email"
-              name="email"
-              required
-            />
+    <body>
 
-            <label>Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              required
-            />
+      <div class="form-box">
 
-            <label>Store / Business Name</label>
-            <input
-              type="text"
-              name="storeName"
-              required
-            />
+        <h1>Become a Seller</h1>
 
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              required
-            />
+        <form
+          method="POST"
+          action="/seller/register"
+        >
 
-            <button type="submit">
-              Create Seller Account
-            </button>
+          <label>
+            Full Name
+          </label>
 
-          </form>
+          <input
+            type="text"
+            name="fullName"
+            required
+          />
 
-          <a href="/">
-            ← Back to Marketplace
-          </a>
+          <label>
+            Email Address
+          </label>
 
-        </div>
+          <input
+            type="email"
+            name="email"
+            required
+          />
 
-      </body>
+          <label>
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            name="phone"
+            required
+          />
+
+          <label>
+            Store / Business Name
+          </label>
+
+          <input
+            type="text"
+            name="storeName"
+            required
+          />
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            required
+          />
+
+          <button type="submit">
+            Create Seller Account
+          </button>
+
+        </form>
+
+        <a href="/">
+          ← Back to Marketplace
+        </a>
+
+      </div>
+
+    </body>
+
     </html>
   `);
 });
@@ -246,242 +506,83 @@ app.post("/seller/register", (req, res) => {
     !storeName ||
     !password
   ) {
+
     return res.send(`
-      <h1>Registration Error</h1>
-      <p>Please fill in all seller registration fields.</p>
-      <a href="/seller/register">
-        Go back
-      </a>
+      <!DOCTYPE html>
+      <html>
+
+      <body>
+
+        <h1>Registration Error</h1>
+
+        <p>
+          Please fill in all seller registration fields.
+        </p>
+
+        <a href="/seller/register">
+          Go back
+        </a>
+
+      </body>
+
+      </html>
     `);
+
   }
 
   res.send(`
     <!DOCTYPE html>
     <html>
-      <head>
-        <title>Seller Registration Successful</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        />
-      </head>
 
-      <body>
+    <head>
 
-        <h1>Seller Registration Successful!</h1>
+      <title>
+        Seller Registration Successful
+      </title>
 
-        <p>
-          Welcome to Edesvino Marketplace,
-          ${fullName}.
-        </p>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
 
-        <p>
-          Your store
-          <strong>${storeName}</strong>
-          has been registered.
-        </p>
+    </head>
 
-        <p>
-          Email:
-          ${email}
-        </p>
+    <body>
 
-        <p>
-          Phone:
-          ${phone}
-        </p>
+      <h1>
+        Seller Registration Successful!
+      </h1>
 
-        <a href="/">
-          Return to Marketplace
-        </a>
+      <p>
+        Welcome to Edesvino Marketplace,
+        ${fullName}.
+      </p>
 
-      </body>
+      <p>
+        Your store
+        <strong>${storeName}</strong>
+        has been registered.
+      </p>
+
+      <p>
+        Email:
+        ${email}
+      </p>
+
+      <p>
+        Phone:
+        ${phone}
+      </p>
+
+      <a href="/">
+        Return to Marketplace
+      </a>
+
+    </body>
+
     </html>
   `);
 });
-
-
-
-
-/* =========================
-   PRODUCTS PAGE
-========================= */
-
-app.get("/products", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Products - Edesvino Marketplace</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-          }
-
-          .container {
-            max-width: 700px;
-            margin: auto;
-          }
-
-          .product {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-          }
-
-          .price {
-            font-size: 20px;
-            font-weight: bold;
-          }
-
-          .buy {
-            padding: 12px 20px;
-            background: green;
-            color: white;
-            border: none;
-            border-radius: 6px;
-          }
-
-          a {
-            display: block;
-            margin-top: 20px;
-          }
-        </style>
-      </head>
-
-      <body>
-        <div class="container">
-
-          <h1>Edesvino Marketplace</h1>
-          <h2>Shop Products</h2>
-
-          <div class="product">
-            <h2>Sample Product</h2>
-
-            <p>
-              Products from Edesvino sellers will appear here.
-            </p>
-
-            <div class="price">
-              ₦0.00
-            </div>
-
-           < button class="buy" onclick="window.location.href='/order'">
-  Buy Now
-</button>
-          </div>
-
-          <a href="/">
-            ← Back to Marketplace
-          </a>
-
-        </div>
-      </body>
-    </html>
-  `);
-});
-
-
-
-
-
-/* =========================
-   ORDER PAGE
-========================= */
-
-app.get("/order", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Place Order - Edesvino Marketplace</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-          }
-
-          .order-box {
-            max-width: 500px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-          }
-
-          input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0 15px;
-            box-sizing: border-box;
-          }
-
-          button {
-            width: 100%;
-            padding: 14px;
-            background: green;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-          }
-
-          a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-          }
-        </style>
-      </head>
-
-      <body>
-
-        <div class="order-box">
-
-          <h1>Place Your Order</h1>
-
-          <p>Sample Product</p>
-          <p><strong>Price: ₦0.00</strong></p>
-
-          <form>
-            <label>Full Name</label>
-            <input type="text" required>
-
-            <label>Phone Number</label>
-            <input type="tel" required>
-
-            <label>Delivery Address</label>
-            <input type="text" required>
-
-            <button type="submit">
-              Place Order
-            </button>
-          </form>
-
-          <a href="/products">
-            ← Back to Products
-          </a>
-
-        </div>
-
-      </body>
-    </html>
-  `);
-});
-
-
-
-
-
 
 
 /* =========================
@@ -493,4 +594,5 @@ app.listen(PORT, () => {
     `Edesvino Marketplace is running on port ${PORT}`
   );
 });
+
 
