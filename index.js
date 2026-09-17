@@ -328,6 +328,122 @@ app.get("/order", (req, res) => {
   `);
 });
 
+Nice. 👍 Now we need to create the route that receives the order.
+Step 2 — Add the Order Submission route
+In index.js, find:
+/* =========================
+   SELLER REGISTRATION PAGE
+========================= */
+Paste the following code directly ABOVE it:
+/* =========================
+   ORDER SUBMISSION
+========================= */
+
+app.post("/order", (req, res) => {
+
+  const {
+    fullName,
+    phone,
+    address
+  } = req.body;
+
+  if (!fullName || !phone || !address) {
+    return res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Order Error</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+
+      <body>
+
+        <h1>Order Error</h1>
+
+        <p>Please fill in all the required information.</p>
+
+        <a href="/order">
+          ← Go Back
+        </a>
+
+      </body>
+      </html>
+    `);
+  }
+
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+      <title>Order Submitted</title>
+
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
+
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background: #f5f5f5;
+          padding: 30px 20px;
+          text-align: center;
+        }
+
+        .box {
+          max-width: 500px;
+          margin: auto;
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+        }
+
+        a {
+          display: inline-block;
+          margin-top: 20px;
+        }
+      </style>
+    </head>
+
+    <body>
+
+      <div class="box">
+
+        <h1>Order Submitted Successfully! 🎉</h1>
+
+        <p>
+          Thank you, <strong>${fullName}</strong>.
+        </p>
+
+        <p>
+          Your order for the Sample Product has been received.
+        </p>
+
+        <p>
+          We will contact you on:
+          <strong>${phone}</strong>
+        </p>
+
+        <p>
+          Delivery Address:
+          <strong>${address}</strong>
+        </p>
+
+        <a href="/products">
+          ← Back to Products
+        </a>
+
+      </div>
+
+    </body>
+
+    </html>
+  `);
+});
+
+
+
 
 /* =========================
    SELLER REGISTRATION PAGE
