@@ -303,6 +303,92 @@ app.post("/seller/register", (req, res) => {
 
 
 
+/* =========================
+   PRODUCTS PAGE
+========================= */
+
+app.get("/products", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Products - Edesvino Marketplace</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+          }
+
+          .container {
+            max-width: 700px;
+            margin: auto;
+          }
+
+          .product {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+          }
+
+          .price {
+            font-size: 20px;
+            font-weight: bold;
+          }
+
+          .buy {
+            padding: 12px 20px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 6px;
+          }
+
+          a {
+            display: block;
+            margin-top: 20px;
+          }
+        </style>
+      </head>
+
+      <body>
+        <div class="container">
+
+          <h1>Edesvino Marketplace</h1>
+          <h2>Shop Products</h2>
+
+          <div class="product">
+            <h2>Sample Product</h2>
+
+            <p>
+              Products from Edesvino sellers will appear here.
+            </p>
+
+            <div class="price">
+              ₦0.00
+            </div>
+
+            <button class="buy">
+              Buy Now
+            </button>
+          </div>
+
+          <a href="/">
+            ← Back to Marketplace
+          </a>
+
+        </div>
+      </body>
+    </html>
+  `);
+});
+
+
+
 
 
 /* =========================
