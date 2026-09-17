@@ -372,9 +372,9 @@ app.get("/products", (req, res) => {
               ₦0.00
             </div>
 
-            <button class="buy">
-              Buy Now
-            </button>
+           < button class="buy" onclick="window.location.href='/order'">
+  Buy Now
+</button>
           </div>
 
           <a href="/">
