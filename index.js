@@ -11,110 +11,89 @@ app.use(express.json());
    HOMEPAGE
 ========================= */
 
+
 app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html>
-      <head>
-        <title>Edesvino Marketplace</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+      <title>Edesvino Marketplace</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding: 40px 20px;
+          background: #f5f5f5;
+        }
 
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f5f5;
-            color: #222;
-          }
+        .box {
+          max-width: 600px;
+          margin: auto;
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+        }
 
-          header {
-            background: #111;
-            color: white;
-            padding: 20px;
-            text-align: center;
-          }
+        button {
+          padding: 15px 25px;
+          margin: 10px;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+        }
 
-          .container {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            text-align: center;
-          }
+        .shop {
+          background: #222;
+          color: white;
+        }
 
-          .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          }
+        .seller {
+          background: green;
+          color: white;
+        }
+      </style>
+    </head>
 
-          button {
-            border: none;
-            padding: 14px 20px;
-            margin: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-          }
+    <body>
+      <div class="box">
+        <h1>Edesvino Marketplace</h1>
 
-          .shop {
-            background: #222;
-            color: white;
-          }
+        <p>Buy and sell products online</p>
 
-          .seller {
-            background: #008000;
-            color: white;
-          }
+        <p>
+          A marketplace where sellers can list products
+          and customers can shop online.
+        </p>
 
-          a {
-            text-decoration: none;
-          }
-        </style>
-      </head>
+        <button
+          class="shop"
+          onclick="window.location.href='/products'"
+        >
+          Shop Products
+        </button>
 
-      <body>
+        <button
+          class="seller"
+          onclick="window.location.href='/seller/register'"
+        >
+          Become a Seller
+        </button>
 
-        <header>
-          <h1>Edesvino Marketplace</h1>
-          <p>Buy and sell products online</p>
-        </header>
-
-        <div class="container">
-
-          <div class="card">
-            <h2>Welcome to Edesvino Marketplace</h2>
-
-            <p>
-              A marketplace where sellers can list products
-              and customers can shop online.
-            </p>
-
-            <button class="shop">
-              Shop Products
-            </button>
-
-            <button
-              class="seller"
-              onclick="window.location.href='/seller/register'"
-            >
-              Become a Seller
-            </button>
-
-            <h3>Products Coming Soon</h3>
-
-            <p>
-              Sellers will soon be able to upload their products here.
-            </p>
-          </div>
-
-        </div>
-
-      </body>
+        <h3>Products Coming Soon</h3>
+      </div>
+    </body>
     </html>
   `);
 });
+
+   
+
+     
+   
+
+   
 
 
 /* =========================
